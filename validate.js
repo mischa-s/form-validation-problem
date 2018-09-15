@@ -2,19 +2,31 @@ function validateEmail () {
   let el = document.getElementById('email')
   let email = el.value
 
-  let valid = (email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))
+  let valid = Boolean(email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))
+  valid ? el.parentElement.className = 'a' : el.parentElement.className = "error"
 
-  valid ? el.parentElement.className = '' : el.parentElement.className = "error"
+  return valid
+}
+
+function validatePassword () {
+  let el = document.getElementById('password')
+  let password = el.value
+
+  let valid = Boolean(password && password.length > 7)
+  valid ? el.parentElement.className = 'a' : el.parentElement.className = "error"
 
   return valid
 }
 
 function validateForm() {
-  var validations = [
-    validateEmail()
+  let validations = [
+    validateEmail(),
+    validatePassword()
   ]
 
-  let validForm = validations.filter(Boolean).length > 0
+  for (i = 0; i < validations.length; i++)
+      if (!validations[i])
+        return false
 
-  return validForm
+    return true
 }
