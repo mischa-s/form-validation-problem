@@ -18,10 +18,21 @@ function validatePassword () {
   return valid
 }
 
+function validateColour () {
+  let el = document.getElementById('colour')
+  let colour = el.value
+  let valid = Boolean(colour)
+
+  valid ? el.parentElement.className = 'a' : el.parentElement.className = "error"
+
+  return valid
+}
+
 function validateForm() {
   let validations = [
     validateEmail(),
-    validatePassword()
+    validatePassword(),
+    validateColour()
   ]
 
   for (i = 0; i < validations.length; i++)
