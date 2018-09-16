@@ -50,10 +50,7 @@ function validateTiger () {
   let tigerType = document.getElementById("tiger_type");
   let valid = Boolean(tigerSelected && tigerType.value.length > 0)
 
-  console.log(valid, 'valid!')
-
   valid ? tigerType.parentElement.className = '' : tigerType.parentElement.className = "error"
-
   return valid
 }
 
