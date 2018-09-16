@@ -45,12 +45,25 @@ function validateAnimals() {
     return valid
 }
 
+function validateTiger () {
+  let tigerSelected = document.getElementById("tiger").checked;
+  let tigerType = document.getElementById("tiger_type");
+  let valid = Boolean(tigerSelected && tigerType.value.length > 0)
+
+  console.log(valid, 'valid!')
+
+  valid ? tigerType.parentElement.className = '' : tigerType.parentElement.className = "error"
+
+  return valid
+}
+
 function validateForm() {
   let validations = [
     validateEmail(),
     validatePassword(),
     validateColour(),
-    validateAnimals()
+    validateAnimals(),
+    validateTiger()
   ]
 
   for (i = 0; i < validations.length; i++)
