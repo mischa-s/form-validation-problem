@@ -3,7 +3,7 @@ function validateEmail () {
   let email = el.value
 
   let valid = Boolean(email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))
-  valid ? el.parentElement.className = 'a' : el.parentElement.className = "error"
+  valid ? el.parentElement.className = '' : el.parentElement.className = "error"
 
   return valid
 }
@@ -13,7 +13,7 @@ function validatePassword () {
   let password = el.value
 
   let valid = Boolean(password && password.length > 7)
-  valid ? el.parentElement.className = 'a' : el.parentElement.className = "error"
+  valid ? el.parentElement.className = '' : el.parentElement.className = "error"
 
   return valid
 }
@@ -23,16 +23,34 @@ function validateColour () {
   let colour = el.value
   let valid = Boolean(colour)
 
-  valid ? el.parentElement.className = 'a' : el.parentElement.className = "error"
+  valid ? el.parentElement.className = '' : el.parentElement.className = "error"
 
   return valid
+}
+
+function validateAnimals() {
+    let animals = document.querySelectorAll('input[name="animal"]')
+    let checked = []
+
+    for (var i = 0; i < animals.length; i++) {
+         if (animals[i].checked) {
+             checked.push(animals[i]);
+        }
+    }
+
+    let valid = Boolean(checked.length  > 1)
+
+    valid ? animals[0].parentElement.className = '' : animals[0].parentElement.className = "error"
+
+    return valid
 }
 
 function validateForm() {
   let validations = [
     validateEmail(),
     validatePassword(),
-    validateColour()
+    validateColour(),
+    validateAnimals()
   ]
 
   for (i = 0; i < validations.length; i++)
