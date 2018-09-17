@@ -12,7 +12,7 @@ function validatePassword () {
   let el = document.getElementById('password')
   let password = el.value
 
-  let valid = Boolean(password && password.length > 7)
+  let valid = Boolean(password && password.length > 8)
   valid ? el.parentElement.className = '' : el.parentElement.className = "error"
 
   return valid
